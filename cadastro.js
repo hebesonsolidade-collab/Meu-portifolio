@@ -59,7 +59,7 @@ formCadastro.addEventListener("submit", async function (event) {
             mensagem.style.color = "green";
 
             setTimeout(function () {
-                window.location.href = "login.html";
+                window.location.href = "index.html";
             }, 1000);
 
         } else {

@@ -99,7 +99,7 @@ formulario.addEventListener("submit", async function (event) {
 
             setTimeout(function () {
 
-                window.location.href = "INDEX.HTML";
+                window.location.href = "portifolio.html";
 
             }, 800);
 
