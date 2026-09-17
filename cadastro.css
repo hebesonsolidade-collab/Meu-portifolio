@@ -1,0 +1,23 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+.cadastro-container {
+    animation: bloco-in 0.50s ease both;
+}
+
+
+@media (max-width: 500px) {
+    .cadastro-container {
+        padding: 30px 25px;
+    }
+
+    .cadastro-container h1 {
+        font-size: 16px;
+    }
+}

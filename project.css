@@ -1,0 +1,191 @@
+/* ==========================================================================
+   PROJECT.HTML - ESTILOS ESPECÍFICOS  ("PROJETO DE VIDA")
+   (tema base do Arquivo do Bunker em minecraft.css)
+   Página = dossiê "Projeto de Vida", um plano de missão arquivado.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   TÍTULO PRINCIPAL (etiqueta dourada de pasta de arquivo)
+   -------------------------------------------------------------------------- */
+.Titulo {
+    position: relative;
+    width: min(520px, 92%);
+    margin: 26px auto;
+    padding: 16px 10px;
+    text-align: center;
+    border-radius: 2px;
+    border: 1px solid #8a6a1e;
+    background: linear-gradient(180deg, #f2d48a, #d8a53a 60%, #b8871f);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45),
+        0 8px 18px rgba(0, 0, 0, 0.55);
+    transform: rotate(-0.5deg);
+    animation: bloco-in 0.50s ease both;
+}
+
+.Titulo::before {
+    content: "";
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    width: 40px;
+    height: 8px;
+    transform: translateY(-50%) rotate(-30deg);
+    background: linear-gradient(180deg, rgba(236, 228, 196, 0.55), rgba(198, 188, 156, 0.30));
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.Titulo::after {
+    content: "";
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    width: 40px;
+    height: 8px;
+    transform: translateY(-50%) rotate(30deg);
+    background: linear-gradient(180deg, rgba(236, 228, 196, 0.55), rgba(198, 188, 156, 0.30));
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.Titulo h1 {
+    font-size: 20px;
+    letter-spacing: 3px;
+    color: #2b1a08;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   CARDS DO PROJETO (páginas do plano de missão)
+   -------------------------------------------------------------------------- */
+.card-1,
+.card-2,
+.card-3 {
+    position: relative;
+    max-width: 860px;
+    margin: 24px auto;
+    padding: 22px 26px;
+    border-radius: 2px;
+    border: 1px solid #b3a07a;
+    background:
+        radial-gradient(circle at 18% 12%, rgba(120, 90, 50, 0.09), transparent 42%),
+        radial-gradient(circle at 85% 85%, rgba(120, 90, 50, 0.07), transparent 45%),
+        linear-gradient(180deg, #efe3bd, #e2d2a2 72%, #d2bf8e);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.50),
+        inset 0 0 24px rgba(120, 90, 50, 0.14);
+    transform: rotate(-0.3deg);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    animation: bloco-in 0.50s ease both;
+}
+
+/* fita adesiva no topo */
+.card-1::before,
+.card-2::before,
+.card-3::before {
+    content: "";
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    width: 100px;
+    height: 17px;
+    transform: translateX(-50%) rotate(-2deg);
+    background: linear-gradient(180deg, rgba(236, 228, 196, 0.60), rgba(198, 188, 156, 0.33));
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* carimbo vermelho de status revelado no hover */
+.card-1::after,
+.card-2::after,
+.card-3::after {
+    content: "EM ANDAMENTO";
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    font-family: var(--fonte-pixel);
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--sangue);
+    padding: 3px 8px;
+    border: 3px solid var(--sangue);
+    border-radius: 3px;
+    background: rgba(243, 230, 193, 0.75);
+    transform: rotate(-12deg);
+    opacity: 0;
+    transition: opacity 0.20s ease, transform 0.20s ease;
+}
+
+.card-2::after {
+    content: "RESOLVIDO";
+}
+
+.card-1:hover,
+.card-2:hover,
+.card-3:hover {
+    transform: rotate(0deg) translateY(-4px);
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.60),
+        inset 0 0 24px rgba(120, 90, 50, 0.16),
+        0 0 20px rgba(224, 166, 60, 0.18);
+}
+
+.card-1:hover::after,
+.card-2:hover::after,
+.card-3:hover::after {
+    opacity: 1;
+    transform: rotate(-12deg) scale(1.05);
+}
+
+.card-1 h2,
+.card-2 h2,
+.card-3 h2 {
+    color: #5a1f1a;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-shadow: none;
+    border-left: 4px solid var(--sangue);
+    padding-left: 12px;
+    margin-bottom: 12px;
+}
+
+.card-1 p,
+.card-2 p,
+.card-3 p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--tinta);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVIDADE
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .Titulo {
+        margin: 18px auto;
+        width: min(320px, 92%);
+    }
+
+    .Titulo h1 {
+        font-size: 13px;
+    }
+
+    .Titulo::before,
+    .Titulo::after {
+        width: 26px;
+    }
+
+    .card-1,
+    .card-2,
+    .card-3 {
+        margin: 18px auto;
+        padding: 16px 16px;
+    }
+
+    .card-1 p,
+    .card-2 p,
+    .card-3 p {
+        font-size: 14px;
+    }
+
+    .card-1 h2,
+    .card-2 h2,
+    .card-3 h2 {
+        font-size: 13px;
+    }
+}

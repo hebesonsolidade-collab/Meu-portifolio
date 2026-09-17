@@ -1,0 +1,326 @@
+
+/* --------------------------------------------------------------------------
+   HERO / APRESENTAÇÃO (ficha de registro do caçador)
+   -------------------------------------------------------------------------- */
+.center {
+    text-align: center;
+}
+
+.secao-vermelha {
+    position: relative;
+    max-width: 640px;
+    margin: 30px auto;
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 2px;
+    border: 1px solid #b3a07a;
+    background:
+        radial-gradient(circle at 50% -10%, rgba(216, 165, 58, 0.10), transparent 55%),
+        radial-gradient(circle at 15% 90%, rgba(120, 90, 50, 0.10), transparent 45%),
+        linear-gradient(180deg, #f1e5c2, #e4d4a4 72%, #d4c290);
+    box-shadow: inset 0 0 30px rgba(120, 90, 50, 0.15),
+        0 10px 22px rgba(0, 0, 0, 0.55);
+    transform: rotate(-0.25deg);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    animation: bloco-in 0.50s ease both;
+}
+
+/* fita adesiva por cima */
+.secao-vermelha::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    width: 116px;
+    height: 18px;
+    transform: translateX(-50%) rotate(-2deg);
+    background: linear-gradient(180deg, rgba(236, 228, 196, 0.62), rgba(198, 188, 156, 0.34));
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* carimbo vermelho de arquivo sigiloso */
+.secao-vermelha::after {
+    content: "CONFIDENCIAL";
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    font-family: var(--fonte-pixel);
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--sangue);
+    padding: 2px 5px;
+    border: 2px solid var(--sangue);
+    border-radius: 2px;
+    background: rgba(243, 230, 193, 0.70);
+    transform: rotate(8deg);
+}
+
+.meu-nome {
+    color: var(--sangue);
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(142, 31, 26, 0.35);
+}
+
+.secao-vermelha:hover {
+    transform: rotate(0deg) translateY(-4px);
+    box-shadow: inset 0 0 30px rgba(120, 90, 50, 0.15),
+        0 14px 26px rgba(0, 0, 0, 0.60);
+}
+
+/* foto estilo polaroid envelhecida do arquivo */
+.secao-vermelha img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 1px;
+    border: 6px solid #f4ead0;
+    outline: 1px solid #b3a07a;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.50);
+    filter: sepia(0.15) contrast(1.03);
+    transform: rotate(-1.5deg);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.secao-vermelha:hover img {
+    transform: rotate(0deg) scale(1.02);
+}
+
+/* nome datilografado com tinta */
+.secao-vermelha h1 {
+    margin-top: 18px;
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: var(--tinta-forte);
+    text-shadow: 2px 2px 0 rgba(220, 200, 160, 0.65);
+}
+
+.secao-vermelha p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: var(--tinta);
+    font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   SOBRE MIM (página manuscrita do diário)
+   -------------------------------------------------------------------------- */
+.caixa {
+    position: relative;
+    max-width: 820px;
+    margin: 34px auto;
+    padding: 24px 26px;
+    border-radius: 2px;
+    border: 1px solid #3a2c1c;
+    color: #e8d9ae;
+    background:
+        radial-gradient(circle at 90% 10%, rgba(111, 215, 255, 0.05), transparent 50%),
+        linear-gradient(180deg, #241a10, #191006 70%, #150e06);
+    box-shadow: inset 0 0 0 3px #0f0a04,
+        inset 0 0 0 4px #3a2c1c,
+        0 10px 20px rgba(0, 0, 0, 0.50);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    animation: bloco-in 0.50s ease both;
+}
+
+.caixa:hover {
+    transform: translateY(-3px);
+    border-color: var(--azul-anjo);
+    box-shadow: inset 0 0 0 3px #0f0a04,
+        inset 0 0 0 4px #3a2c1c,
+        0 12px 24px rgba(0, 0, 0, 0.55),
+        0 0 24px rgba(111, 215, 255, 0.14);
+}
+
+.caixa h2 {
+    margin-bottom: 12px;
+}
+
+.caixa h2 p {
+    color: var(--enxofre);
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.85);
+}
+
+.caixa p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #d9cdae;
+}
+
+/* --------------------------------------------------------------------------
+   CONTATOS
+   -------------------------------------------------------------------------- */
+.os {
+    text-align: center;
+    margin: 40px 0 10px;
+}
+
+.os h3 {
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: var(--enxofre);
+    text-shadow: 0 0 12px rgba(224, 166, 60, 0.45);
+}
+
+.contatos {
+    display: flex;
+    justify-content: center;
+    gap: 26px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+/* cartões de visita de caçador (papel velho pregado com tachinha) */
+.quadrado {
+    position: relative;
+    width: 250px;
+    text-align: center;
+    padding: 18px 16px;
+    margin-bottom: 34px;
+    border-radius: 2px;
+    border: 1px solid #b3a07a;
+    background:
+        radial-gradient(circle at 20% 15%, rgba(120, 90, 50, 0.08), transparent 45%),
+        linear-gradient(180deg, #f1e5c2, #e0cf9e 72%, #d0bc89);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.50),
+        inset 0 0 16px rgba(120, 90, 50, 0.14);
+    transform: rotate(-1deg);
+    transition: transform 0.20s ease, box-shadow 0.20s ease, border-color 0.20s ease;
+    animation: bloco-in 0.50s ease both;
+}
+
+/* tachinha de metal */
+.quadrado::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle at 35% 30%, #d9c9a8, #7a6a4a 55%, #45361f);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.55);
+}
+
+.quadrado:hover {
+    transform: rotate(0deg) translateY(-4px);
+    border-color: var(--sangue);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.60),
+        inset 0 0 16px rgba(120, 90, 50, 0.18),
+        0 0 18px rgba(142, 31, 26, 0.25);
+}
+
+.quadrado a {
+    display: block;
+}
+
+.quadrado img {
+    width: 84px;
+    height: 84px;
+    object-fit: contain;
+    margin-bottom: 8px;
+    filter: sepia(0.25) contrast(1.02);
+    transition: transform 0.20s ease;
+}
+
+.quadrado:hover img {
+    transform: scale(1.05);
+}
+
+.quadrado .img-whats {
+    width: 110px;
+    height: 110px;
+}
+
+.quadrado p {
+    font-size: 13px;
+    color: var(--tinta);
+    margin-top: 4px;
+    line-height: 1.5;
+}
+
+.quadrado strong {
+    color: var(--tinta-forte);
+    letter-spacing: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   SÍMBOLOS DE SUPERNATURAL (página inicial)
+   -------------------------------------------------------------------------- */
+
+/* ancora o selo da Marca de Cain à foto do caçador */
+.secao-vermelha a {
+    position: relative;
+    display: inline-block;
+}
+
+/* Marca de Cain sobre a foto (sem fundo, brilho de brasa no hover) */
+.secao-vermelha .mark-of-cain {
+    position: absolute;
+    right: -4px;
+    bottom: -4px;
+    z-index: 2;
+    color: rgba(140, 58, 40, 0.95);
+    line-height: 0;
+}
+
+.secao-vermelha .mark-of-cain svg {
+    width: clamp(15px, 2.6vw, 22px);
+    height: auto;
+}
+
+.secao-vermelha .mark-of-cain:hover {
+    color: #ffe6e3;
+    filter:
+        drop-shadow(0 0 1px rgba(255, 230, 227, 0.95))
+        drop-shadow(0 0 5px rgba(247, 175, 169, 0.85))
+        drop-shadow(0 0 11px rgba(217, 123, 114, 0.80))
+        drop-shadow(0 0 20px rgba(165, 79, 69, 0.70))
+        drop-shadow(0 0 32px rgba(110, 43, 38, 0.55));
+    transform: scale(1.08);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVIDADE
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .secao-vermelha {
+        margin: 20px auto;
+        padding: 24px 14px;
+    }
+
+    .secao-vermelha img {
+        width: 160px;
+        height: 160px;
+    }
+
+    .secao-vermelha h1 {
+        font-size: 15px;
+    }
+
+    .secao-vermelha::after {
+        font-size: 7px;
+    }
+
+    .caixa {
+        padding: 18px;
+    }
+
+    .caixa p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .devil-trap-badge {
+        width: 34px;
+        height: 34px;
+    }
+
+    .secao-vermelha .mark-of-cain svg {
+        width: 13px;
+        height: auto;
+    }
+}

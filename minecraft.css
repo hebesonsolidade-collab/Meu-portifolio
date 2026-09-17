@@ -1,0 +1,1282 @@
+/* ==========================================================================
+   TEMA DO ARQUIVO DO BUNKER - "Dicionário de Caçadores / Homens de Letras"
+   Tema base compartilhado de todo o portfólio (substitui o tema "Minecraft").
+   Nenhuma classe funcional, ID ou lógica foi alterada — apenas a camada
+   visual, agora imersa na mitologia de SUPERNATURAL:
+   pergaminho/couro do diário de John Winchester, armadilha do demônio,
+   azul celestial de anjo, enxofre e painel do Impala '67.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   FONTES: máquina de escrever (anotações de caçador) + serifada de grimório
+   -------------------------------------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Special+Elite&display=swap");
+
+/* --------------------------------------------------------------------------
+   RESET
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   VARIÁVEIS / PALETA DO CAÇADOR
+   Caçadores & Manuscritos: tinta de caneta tinteiro, notas adesivas
+   amareladas, sangue e marrom rústico.
+   Anjos & Celestiais: azul neon celestial + prata envelhecida.
+   Demônios & Cavaleiros do Inferno: vermelho fogo, enxofre/âmbar queimado.
+   -------------------------------------------------------------------------- */
+:root {
+    /* couro envelhecido e pergaminho do diário */
+    --preto-prfundo: #070503;
+    --couro-escuro: #140d06;
+    --couro-medio: #21170c;
+    --pergaminho: #e9dcb2;
+    --pergaminho-claro: #f3e8c6;
+    --pergaminho-escuro: #cfbc8c;
+
+    /* tinta e textos */
+    --tinta: #3a2318;
+    --tinta-forte: #24150d;
+
+    /* sangue / demônios */
+    --sangue: #8e1f1a;
+    --fogo: #c22a14;
+    --enxofre: #e0a63c;
+    --impala: #ff9a2e;
+
+    /* anjos */
+    --azul-anjo: #6fd7ff;
+    --azul-anjo-claro: #cdeeff;
+    --prata: #c2c7cd;
+
+    /* VARIÁVEIS LEGADAS (referenciadas pelos CSS de página) */
+    --grama: #4e5440;
+    --grama-claro: #6c7254;
+    --grama-escuro: #2b3020;
+    --terra: #6b4a32;
+    --terra-escuro: #382417;
+    --areia: #e5d5a5;
+    --pedra: #4c4c4c;
+    --pedra-escuro: #1d1a17;
+    --ceu: #0c0a08;
+    --branco: #efe6d0;
+    --borda: #1a120a;
+    --ouro: #d8a53a;
+    --texto: #d6cbb0;
+
+    /* fontes */
+    --fonte-pixel: "Special Elite", "Courier New", Courier, monospace;
+    --fonte-corpo: "IM Fell English", Georgia, "Times New Roman", serif;
+}
+
+/* --------------------------------------------------------------------------
+   BODY / FUNDO (couro escuro + fumaça negra + vinheta)
+   -------------------------------------------------------------------------- */
+body {
+    font-family: var(--fonte-corpo);
+    color: var(--texto);
+    min-height: 100vh;
+    margin: 0;
+    padding-bottom: 20px;
+    position: relative;
+    background-color: var(--preto-prfundo);
+    background-image:
+        /* brumas de fumaça negra e luz de fogo distante */
+        radial-gradient(ellipse 900px 480px at 12% -5%, rgba(90, 64, 38, 0.45), transparent 65%),
+        radial-gradient(ellipse 640px 400px at 96% 12%, rgba(148, 154, 170, 0.05), transparent 55%),
+        radial-gradient(ellipse 520px 360px at 82% 95%, rgba(194, 42, 20, 0.06), transparent 60%),
+        /* textura de couro/granulação */
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.012) 0 2px, transparent 2px 4px),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.010) 0 2px, transparent 2px 4px),
+        linear-gradient(180deg, #0b0906 0%, #0e0a06 45%, #110b05 100%);
+    background-repeat: no-repeat;
+    background-size: auto, auto, auto, auto, auto, cover;
+    background-position: center center;
+}
+
+/* ==================================================================
+   ARMADILHA DO DEMÔNIO (PENTAGRAMA)
+   Marca d'água gigante, semi-transparente, centralizada no fundo
+   principal e girando lentamente (via CSS, presente em todas as
+   páginas sem tocar no HTML de cada uma).
+   ================================================================== */
+body::before {
+    content: "";
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: min(88vmin, 720px);
+    height: min(88vmin, 720px);
+    z-index: -2;
+    pointer-events: none;
+    opacity: 0.16;
+    will-change: transform;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 0 26px rgba(255, 70, 55, 0.50));
+    animation: girar-fundo 90s linear infinite;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23ff4538%22%20stroke-width%3D%222%22%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2296%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2276%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2224%22%2F%3E%3Cpath%20d%3D%22M100%2010%20L152.9%20172.8%20L14.4%2072.2%20L185.6%2072.2%20L47.1%20172.8%20Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+
+/* Vinheta cinematográfica sobre as bordas */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(ellipse 120% 92% at 50% 8%, transparent 55%, rgba(0, 0, 0, 0.58) 100%);
+    background-repeat: no-repeat;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+p {
+    line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   BOTÕES (pastilhas de arquivo / botões do painel do Impala)
+   -------------------------------------------------------------------------- */
+button {
+    position: relative;
+    font-family: var(--fonte-pixel);
+    font-size: 11px;
+    line-height: 1.4;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #e9dcc0;
+    padding: 12px 16px;
+    background: linear-gradient(180deg, #3a2c1c, #241708 60%, #150e06);
+    border: 2px solid #4a3826;
+    border-bottom-color: #0f0a04;
+    border-radius: 2px;
+    cursor: pointer;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.85);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10),
+        0 3px 0 rgba(0, 0, 0, 0.50),
+        0 0 0 1px #0a0704;
+    transition: transform 0.16s ease, box-shadow 0.16s ease, color 0.16s ease, border-color 0.16s ease;
+}
+
+/* fogo do painel do Impala '67 / enxofre */
+button:hover {
+    color: #ffb443;
+    border-color: #e0a63c;
+    transform: translateY(-1px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10),
+        0 3px 0 rgba(0, 0, 0, 0.50),
+        0 0 12px rgba(224, 166, 60, 0.35),
+        0 0 26px rgba(224, 166, 60, 0.14);
+    text-shadow: 0 0 8px rgba(255, 154, 46, 0.65);
+}
+
+button:active {
+    transform: translateY(2px);
+    box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.75);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--azul-anjo);
+    outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   HEADER / MENU (prateleira de arquivos do bunker)
+   -------------------------------------------------------------------------- */
+nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background:
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0 2px, transparent 2px 6px),
+        linear-gradient(180deg, #241a10, #191006 70%, #120b04);
+    border-bottom: 3px solid #0c0803;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 4px 12px rgba(0, 0, 0, 0.55);
+}
+
+/* filete de latão envelhecido no topo */
+nav::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(216, 165, 58, 0.55), transparent);
+    pointer-events: none;
+}
+
+nav > a {
+    flex-shrink: 0;
+}
+
+nav > a > button {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+}
+
+.menu li {
+    list-style: none;
+}
+
+/* guias de arquivo */
+.menu a {
+    display: block;
+    font-family: var(--fonte-pixel);
+    font-size: 10px;
+    line-height: 1.5;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #d6cbb0;
+    padding: 10px 14px;
+    background: linear-gradient(180deg, #35281a, #221709 70%, #1a1107);
+    border: 1px solid #4a3826;
+    border-bottom: 3px solid #0e0903;
+    border-radius: 2px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        0 2px 0 rgba(0, 0, 0, 0.40);
+    transition: transform 0.16s ease, box-shadow 0.16s ease, color 0.16s ease, border-color 0.16s ease;
+}
+
+/* luz celestial (anjo) sobre a navegação ordenada */
+.menu a:hover {
+    color: #dff3ff;
+    border-color: var(--azul-anjo);
+    transform: translateY(-1px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 0 14px rgba(111, 215, 255, 0.30),
+        0 2px 0 rgba(0, 0, 0, 0.40);
+    text-shadow: 0 0 8px rgba(154, 220, 255, 0.75);
+}
+
+.menu a.active {
+    color: #2b1a08;
+    background: linear-gradient(180deg, #f2d48a, #d8a53a 60%, #b8871f);
+    border-color: #8a6a1e;
+    border-bottom-color: #6b4a32;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.35);
+    animation: cintilar 3.2s ease-in-out infinite;
+}
+
+/* --------------------------------------------------------------------------
+   TÍTULOS (máquina de escrever, tinta no papel)
+   -------------------------------------------------------------------------- */
+h1,
+h2,
+h3 {
+    font-family: var(--fonte-pixel);
+    line-height: 1.4;
+}
+
+h1 {
+    font-size: 26px;
+    color: #efe6d0;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.85),
+        0 0 18px rgba(216, 165, 58, 0.12);
+}
+
+h2 {
+    font-size: 17px;
+    color: #e8d9ae;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.80);
+}
+
+h3 {
+    font-size: 12px;
+    color: #e0d3af;
+}
+
+/* --------------------------------------------------------------------------
+   CONTAINER / ESTRUTURA
+   -------------------------------------------------------------------------- */
+.container {
+    width: 92%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+/* --------------------------------------------------------------------------
+   SEÇÕES "EIXO" (pastas de arquivo do bunker, grampeadas nos cantos)
+   -------------------------------------------------------------------------- */
+.eixo {
+    position: relative;
+    background-image:
+        radial-gradient(circle 5px at 10px 10px, rgba(214, 201, 179, 0.28), rgba(214, 201, 179, 0) 70%),
+        radial-gradient(circle 5px at calc(100% - 10px) 10px, rgba(214, 201, 179, 0.28), rgba(214, 201, 179, 0) 70%),
+        radial-gradient(circle 5px at 10px calc(100% - 10px), rgba(214, 201, 179, 0.28), rgba(214, 201, 179, 0) 70%),
+        radial-gradient(circle 5px at calc(100% - 10px) calc(100% - 10px), rgba(214, 201, 179, 0.28), rgba(214, 201, 179, 0) 70%),
+        radial-gradient(ellipse at 20% 0%, rgba(216, 165, 58, 0.06), transparent 55%),
+        linear-gradient(180deg, #21170c, #191006 70%, #150e06);
+    background-repeat: no-repeat;
+    border: 1px solid #3a2c1c;
+    border-radius: 2px;
+    box-shadow: inset 0 0 0 3px #140d05,
+        inset 0 0 0 4px #3a2c1c,
+        0 8px 18px rgba(0, 0, 0, 0.50);
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+/* nota adesiva amarelada pregada no arquivo */
+.eixo h2 {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 8px 16px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #2b1a08;
+    text-shadow: none;
+    background: linear-gradient(180deg, #f3e6a8, #e7d187 60%, #dcc274);
+    border: 1px solid #cbb685;
+    border-radius: 1px;
+    transform: rotate(-1deg);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   GALERIAS
+   -------------------------------------------------------------------------- */
+.galeria,
+.galeria-escolhida {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* --------------------------------------------------------------------------
+   CARDS (recortes de jornal presos no diário por fita adesiva)
+   -------------------------------------------------------------------------- */
+.card {
+    position: relative;
+    width: 250px;
+    max-width: 100%;
+    padding: 10px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 1px 3px 2px 3px;
+    border: 1px solid #b3a07a;
+    background:
+        radial-gradient(circle at 20% 10%, rgba(120, 90, 50, 0.10), transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(120, 90, 50, 0.08), transparent 45%),
+        linear-gradient(180deg, #efe3bd, #e2d2a4 70%, #d4c294);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.50),
+        inset 0 0 18px rgba(120, 90, 50, 0.18);
+    transform: rotate(-0.4deg);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    animation: bloco-in 0.50s ease both;
+}
+
+/* fita adesiva */
+.card::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    width: 76px;
+    height: 16px;
+    transform: translateX(-50%) rotate(-2deg);
+    background: linear-gradient(180deg, rgba(236, 228, 196, 0.60), rgba(198, 188, 156, 0.32));
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    z-index: 2;
+}
+
+/* carimbo de status revelado no hover ("caso arquivado") */
+.card::after {
+    content: "EM ANDAMENTO";
+    position: absolute;
+    right: 6px;
+    bottom: 8px;
+    z-index: 3;
+    font-family: var(--fonte-pixel);
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--sangue);
+    padding: 2px 6px;
+    border: 2px solid var(--sangue);
+    border-radius: 2px;
+    background: rgba(243, 230, 193, 0.70);
+    transform: rotate(-12deg);
+    opacity: 0;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.card:hover {
+    transform: rotate(0deg) translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.60),
+        inset 0 0 18px rgba(120, 90, 50, 0.20);
+}
+
+.card:hover::after {
+    opacity: 1;
+    transform: rotate(-12deg) scale(1.05);
+}
+
+.card img,
+.card-escolhido img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    border: 4px solid #efe3c0;
+    outline: 1px solid #b3a07a;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.40);
+    background-color: #cfbc8c;
+    filter: sepia(0.10) contrast(1.02);
+}
+
+.card p {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--tinta);
+    line-height: 1.5;
+}
+
+/* Caso em destaque (RESOLVIDO): pasta de couro com borda de enxofre */
+.card-escolhido {
+    position: relative;
+    width: 250px;
+    max-width: 100%;
+    padding: 10px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 2px;
+    border: 1px solid #8a6a1e;
+    outline: 3px solid var(--enxofre);
+    outline-offset: 2px;
+    background-image:
+        url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23ff6a56%22%20stroke-opacity%3D%220.16%22%20stroke-width%3D%222%22%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2296%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2276%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2224%22%2F%3E%3Cpath%20d%3D%22M100%2010%20L152.9%20172.8%20L14.4%2072.2%20L185.6%2072.2%20L47.1%20172.8%20Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"),
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0 10px, transparent 10px 20px),
+        radial-gradient(ellipse at 50% 0%, rgba(216, 165, 58, 0.12), transparent 55%),
+        linear-gradient(180deg, #2c1f11, #1c1207 70%, #140c05);
+    background-repeat: no-repeat, repeat, no-repeat, no-repeat;
+    background-size: 130px 130px, auto, auto, auto;
+    background-position: center, 0 0, 50% 0%, 0 0;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 4px 10px rgba(0, 0, 0, 0.55);
+    transform: rotate(-0.4deg);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    animation: bloco-in 0.50s ease both;
+}
+
+.card-escolhido::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    width: 76px;
+    height: 16px;
+    transform: translateX(-50%) rotate(2deg);
+    background: linear-gradient(180deg, rgba(236, 228, 196, 0.60), rgba(198, 188, 156, 0.32));
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    z-index: 2;
+}
+
+.card-escolhido::after {
+    content: "RESOLVIDO";
+    position: absolute;
+    right: 6px;
+    bottom: 8px;
+    z-index: 3;
+    font-family: var(--fonte-pixel);
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--sangue);
+    padding: 2px 6px;
+    border: 2px solid var(--sangue);
+    border-radius: 2px;
+    background: rgba(243, 230, 193, 0.80);
+    transform: rotate(-12deg);
+    opacity: 0;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.card-escolhido:hover {
+    transform: rotate(0deg) translateY(-4px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 8px 16px rgba(0, 0, 0, 0.60),
+        0 0 20px rgba(216, 165, 58, 0.25);
+}
+
+.card-escolhido:hover::after {
+    opacity: 1;
+    transform: rotate(-12deg) scale(1.05);
+}
+
+.card-escolhido img {
+    border-color: #3a2c1c;
+    outline-color: #8a6a1e;
+    filter: sepia(0.18) contrast(1.04);
+}
+
+.card-escolhido h3 {
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--enxofre);
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.80);
+}
+
+.card-escolhido p {
+    color: #e0d3af;
+    margin-top: 4px;
+    font-size: 12px;
+}
+
+.info-card,
+.info-card-escolhido {
+    padding: 8px 2px 2px;
+}
+
+.info-card h3 {
+    font-size: 11px;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+    color: var(--tinta-forte);
+    text-shadow: none;
+}
+
+.info-card p {
+    color: var(--tinta);
+}
+
+/* Bloco decorativo para itens sem imagem ("?" do arquivo sigiloso) */
+.card-vazio {
+    width: 230px;
+    height: 240px;
+    margin: 0 auto;
+    border: 2px solid #3a2c1c;
+    border-radius: 2px;
+    background:
+        radial-gradient(circle at 50% 50%, rgba(216, 165, 58, 0.10), transparent 60%),
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0 8px, transparent 8px 16px),
+        linear-gradient(180deg, #1a120a, #0f0a05);
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.80),
+        0 4px 10px rgba(0, 0, 0, 0.50);
+}
+
+.card-vazio::before {
+    content: "?";
+    font-family: var(--fonte-pixel);
+    font-size: 42px;
+    color: rgba(224, 166, 60, 0.60);
+    text-shadow: 0 0 12px rgba(224, 166, 60, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   IMAGENS
+   -------------------------------------------------------------------------- */
+img {
+    image-rendering: auto;
+}
+
+/* --------------------------------------------------------------------------
+   TABELA (PPE / livro de registros do caçador)
+   -------------------------------------------------------------------------- */
+.tabela-container {
+    width: min(96%, 1200px);
+    margin: 0 auto 40px;
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 640px;
+    font-size: 15px;
+    color: #e8d9ae;
+    background: linear-gradient(180deg, #241a10, #1a120a);
+    border: 2px solid #3a2c1c;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.50);
+}
+
+th,
+td {
+    border: 1px solid #33261a;
+    padding: 14px 10px;
+    text-align: center;
+}
+
+th {
+    font-family: var(--fonte-pixel);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #2b1a08;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.25);
+    background: linear-gradient(180deg, #f2d48a, #d8a53a 60%, #b8871f);
+}
+
+tr:nth-child(even) td {
+    background: rgba(255, 255, 255, 0.025);
+}
+
+/* lampejo angelical ao inspecionar a linha do diário */
+tr:hover td {
+    background: rgba(111, 215, 255, 0.07);
+    color: #dff3ff;
+}
+
+/* --------------------------------------------------------------------------
+   FORMULÁRIOS (login / cadastro — acesso ao bunker)
+   -------------------------------------------------------------------------- */
+.login-container,
+.cadastro-container {
+    position: relative;
+    width: 400px;
+    max-width: 92%;
+    padding: 34px 30px;
+    border-radius: 2px;
+    color: #e8d9ae;
+    background-image:
+        url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23ff6a56%22%20stroke-opacity%3D%220.14%22%20stroke-width%3D%222%22%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2296%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2276%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2224%22%2F%3E%3Cpath%20d%3D%22M100%2010%20L152.9%20172.8%20L14.4%2072.2%20L185.6%2072.2%20L47.1%20172.8%20Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"),
+        radial-gradient(circle at 50% 30%, rgba(216, 165, 58, 0.05), transparent 55%),
+        linear-gradient(180deg, #241a10, #191006 70%, #140d05);
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-size: 150px 150px, auto, auto;
+    background-position: center, 50% 30%, 0 0;
+    border: 2px solid #3a2c1c;
+    box-shadow: inset 0 0 0 3px #0f0a04,
+        0 10px 22px rgba(0, 0, 0, 0.60);
+}
+
+/* fita adesiva segurando o formulário no diário */
+.login-container::before,
+.cadastro-container::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    width: 110px;
+    height: 18px;
+    transform: translateX(-50%) rotate(-2deg);
+    background: linear-gradient(180deg, rgba(236, 228, 196, 0.60), rgba(198, 188, 156, 0.32));
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.30);
+}
+
+.login-container h1,
+.cadastro-container h1 {
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: #f2d48a;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.80);
+    text-align: left;
+    margin-bottom: 25px;
+    padding-bottom: 12px;
+    border-bottom: 2px dashed #6b4a32;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 14px;
+    font-family: var(--fonte-pixel);
+    letter-spacing: 1px;
+    color: var(--areia);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 11px 12px;
+    font-size: 14px;
+    font-family: var(--fonte-corpo);
+    color: var(--pergaminho-claro);
+    background-color: rgba(10, 7, 4, 0.60);
+    border: 1px solid #4a3826;
+    border-radius: 1px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.60);
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: var(--azul-anjo);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.60),
+        0 0 0 2px rgba(111, 215, 255, 0.25);
+}
+
+.form-group input::placeholder {
+    color: #8a7a63;
+}
+
+.pass {
+    text-align: right;
+    margin-top: -5px;
+    margin-bottom: 25px;
+}
+
+.pass a {
+    color: var(--azul-anjo-claro);
+    font-size: 13px;
+}
+
+.pass a:hover,
+.signup_link a:hover,
+.login-link a:hover {
+    text-decoration: underline;
+    text-shadow: 0 0 8px rgba(154, 220, 255, 0.70);
+}
+
+.botoes {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.btn-conectar,
+.btn-cancelar,
+.btn-cadastrar {
+    width: 100%;
+    border-radius: 2px;
+    font-family: var(--fonte-pixel);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.85);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+/* tecnologia/ordem: luz angelical */
+.btn-conectar,
+.btn-cadastrar {
+    background: linear-gradient(180deg, #223a4a, #16262f 60%, #0e161c);
+    border: 2px solid #356077;
+    color: #dff3ff;
+}
+
+.btn-conectar:hover,
+.btn-cadastrar:hover {
+    color: #ffffff;
+    border-color: var(--azul-anjo);
+    transform: translateY(-2px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14),
+        0 3px 0 rgba(0, 0, 0, 0.50),
+        0 0 14px rgba(111, 215, 255, 0.45),
+        0 0 30px rgba(111, 215, 255, 0.18);
+}
+
+/* cancelar: brasa do inferno */
+.btn-cancelar {
+    background: linear-gradient(180deg, #3a1a14, #24100a 60%, #160906);
+    border: 2px solid #7a2a1c;
+    color: #ffd9d0;
+}
+
+.btn-cancelar:hover {
+    color: #ffffff;
+    border-color: var(--fogo);
+    transform: translateY(-2px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14),
+        0 3px 0 rgba(0, 0, 0, 0.50),
+        0 0 14px rgba(194, 42, 20, 0.50),
+        0 0 30px rgba(194, 42, 20, 0.20);
+}
+
+.btn-conectar:active,
+.btn-cancelar:active,
+.btn-cadastrar:active {
+    transform: translateY(2px);
+    box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.75);
+}
+
+.signup_link,
+.login-link {
+    text-align: center;
+    margin-top: 22px;
+    font-size: 14px;
+}
+
+.signup_link span,
+.login-link span {
+    color: var(--branco);
+}
+
+.signup_link a,
+.login-link a {
+    color: var(--azul-anjo-claro);
+    margin-left: 4px;
+}
+
+#mensagem {
+    text-align: center;
+    margin-top: 15px;
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+}
+
+/* --------------------------------------------------------------------------
+   FOOTER (faixa de expedição / selo do arquivo)
+   -------------------------------------------------------------------------- */
+footer {
+    position: relative;
+    margin-top: 50px;
+    padding: 16px 12px;
+    text-align: center;
+    color: #d6cbb0;
+    background: linear-gradient(180deg, #241a10, #191006 70%, #120b04);
+    border-top: 3px solid #0c0803;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+footer p {
+    font-size: 13px;
+    font-family: var(--fonte-pixel);
+    letter-spacing: 1px;
+    color: #b8a888;
+    line-height: 1.5;
+    padding: 0 30px;
+}
+
+footer strong {
+    color: var(--enxofre);
+}
+
+/* --------------------------------------------------------------------------
+   SÍMBOLOS DE SUPERNATURAL — componentes decorativos reutilizáveis
+   -------------------------------------------------------------------------- */
+
+/* ===================== SÍMBOLOS ENOCHIANOS (faixa/borda angelical) ===== */
+.enochian-band {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 8px 0 2px;
+    overflow: hidden;
+}
+
+.enochian-band .enochian {
+    width: 100%;
+    height: 34px;
+    color: rgba(194, 199, 205, 0.30);
+    transition: color 0.35s ease, filter 0.35s ease;
+}
+
+/* a Graça angelical acende em azul neon quando o usuário interage */
+.enochian-band:hover .enochian {
+    color: var(--azul-anjo-claro);
+    filter: drop-shadow(0 0 7px rgba(111, 215, 255, 0.85));
+}
+
+/* faixa inferior do rodapé (opcional) */
+.enochian-band.footer-band {
+    padding: 6px 0 10px;
+    border-bottom: 1px dashed rgba(216, 165, 58, 0.25);
+    margin-bottom: 10px;
+}
+
+/* ===================== LÍNGUA DOS ANJOS (fundo do site inteiro) ========= */
+/* camada fixa que ocupa todo o documento, atrás de cards e conteúdos */
+.angels-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 88px 0 70px;
+    overflow: hidden;
+    pointer-events: auto;
+}
+
+/* cada fileira de glifos se espalha de cima a baixo do site */
+.angels-layer .sigil-row {
+    width: 100%;
+    flex: 0 0 auto;
+    height: clamp(22px, 3.4vmin, 58px);
+    color: rgba(194, 199, 205, 0.22);
+    will-change: transform;
+    animation: paira-anjos var(--deriva-duracao, 15s) ease-in-out var(--deriva-atraso, 0s) infinite;
+}
+
+/* cada fileira deriva em ritmo pr?prio para um movimento sutil e vivo */
+.angels-layer .sigil-row:nth-child(1) { --deriva-duracao: 13s; --deriva-atraso: -2s; }
+.angels-layer .sigil-row:nth-child(2) { --deriva-duracao: 17s; --deriva-atraso: -7s; }
+.angels-layer .sigil-row:nth-child(3) { --deriva-duracao: 12s; --deriva-atraso: -1s; }
+.angels-layer .sigil-row:nth-child(4) { --deriva-duracao: 16s; --deriva-atraso: -9s; }
+.angels-layer .sigil-row:nth-child(5) { --deriva-duracao: 14s; --deriva-atraso: -5s; }
+.angels-layer .sigil-row:nth-child(6) { --deriva-duracao: 18s; --deriva-atraso: -11s; }
+
+@keyframes paira-anjos {
+    0%, 100% { transform: translate(-20px, 0); }
+    25% { transform: translate(8px, 4px); }
+    50% { transform: translate(20px, 0); }
+    75% { transform: translate(8px, -4px); }
+}
+
+/* brilho individual ao passar o mouse em cima de um glifo */
+.angels-layer .sigil-row use {
+    transition: color 0.30s ease, filter 0.30s ease;
+}
+
+.angels-layer .sigil-row use:hover {
+    color: var(--azul-anjo-claro);
+    filter: drop-shadow(0 0 6px rgba(111, 215, 255, 0.90));
+}
+
+@media (max-width: 480px) {
+    .angels-layer {
+        padding: 70px 0 46px;
+    }
+
+    .angels-layer .sigil-row {
+        height: clamp(16px, 3vmin, 30px);
+    }
+}
+
+/* ===================== MARCA DE CAIN (selo de brasa) =================== */
+.mark-of-cain {
+    --caim-cor-nucleo: #ffe6e3;
+    --caim-cor-rosa: #f7afa9;
+    --caim-cor-rosa-esc: #d97b72;
+    --caim-cor-vermelho: #a54f45;
+    --caim-cor-vermelho-esc: #6e2b26;
+    --caim-cor-halo: rgba(58, 20, 18, 0.70);
+    display: inline-flex;
+    align-items: center;
+    color: rgba(92, 40, 31, 0.85);
+    transition: color 0.50s ease, filter 0.50s ease, transform 0.50s ease;
+    cursor: pointer;
+}
+
+.mark-of-cain svg {
+    width: 18px;
+    height: auto;
+    display: block;
+}
+
+/* brilho da Marca de Caim (núcleo branco/rosa + halo vermelho/crimson) */
+.mark-of-cain:hover {
+    color: var(--caim-cor-nucleo);
+    filter:
+        drop-shadow(0 0 1px rgba(255, 230, 227, 0.95))
+        drop-shadow(0 0 4px var(--caim-cor-rosa))
+        drop-shadow(0 0 9px var(--caim-cor-rosa-esc))
+        drop-shadow(0 0 16px rgba(165, 79, 69, 0.75))
+        drop-shadow(0 0 26px rgba(110, 43, 38, 0.60))
+        drop-shadow(0 0 40px var(--caim-cor-halo));
+    transform: scale(1.06);
+}
+
+/* selo no canto inferior do rodapé (couro escuro → brasa visível) */
+footer .mark-of-cain {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(122, 55, 46, 0.95);
+}
+
+footer .mark-of-cain svg {
+    width: 18px;
+    height: auto;
+}
+
+/* marca dentro de botões de ação principal (Entrar / Cadastrar) */
+button .mark-of-cain {
+    color: #a54f45;
+    align-items: center;
+    vertical-align: middle;
+    line-height: 0;
+    position: relative;
+    top: -2px;
+}
+
+button .mark-of-cain svg {
+    width: 9px;
+    height: auto;
+    display: block;
+    margin-right: 5px;
+}
+
+button:hover .mark-of-cain {
+    color: var(--caim-cor-nucleo);
+    filter:
+        drop-shadow(0 0 2px rgba(255, 230, 227, 0.95))
+        drop-shadow(0 0 6px rgba(247, 175, 169, 0.85))
+        drop-shadow(0 0 12px rgba(217, 123, 114, 0.75));
+}
+
+/* ===================== ARMADILHA DO DEMÔNIO (medalhão giratório) ======= */
+.devil-trap-badge {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 54px;
+    height: 54px;
+    color: rgba(255, 96, 80, 0.75);
+    opacity: 0.70;
+    pointer-events: none;
+    filter: drop-shadow(0 0 6px rgba(255, 80, 64, 0.40));
+    animation: girar-sigilo 44s linear infinite;
+}
+
+.devil-trap-badge svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* ===================== BALAS DE PRATA + COSTURA (divisor de seção) ===== */
+.silver-divider {
+    position: relative;
+    height: 30px;
+    margin: 8px auto 4px;
+    max-width: min(780px, 92%);
+}
+
+/* costura de couro do diário de John Winchester */
+.silver-divider::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 2px;
+    transform: translateY(2px);
+    background: repeating-linear-gradient(90deg,
+        transparent 0 6px,
+        rgba(216, 165, 58, 0.50) 6px 9px,
+        transparent 9px 15px);
+}
+
+/* filete de balas de prata por cima da costura */
+.silver-divider::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 8px;
+    transform: translateY(-3px);
+    border-radius: 4px;
+    opacity: 0.90;
+    background: repeating-linear-gradient(90deg,
+        transparent 0 24px,
+        #b9c0c6 24px 32px,
+        transparent 32px 56px);
+}
+
+/* --------------------------------------------------------------------------
+   BARRA DE ROLAGEM temática + SELEÇÃO
+   -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0d0a06;
+    border-left: 1px solid #2a1c0f;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #5a4630, #2c1f12);
+    border: 2px solid #0d0a06;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #7a5a3e, #38291a);
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #4a3826 #0d0a06;
+}
+
+::selection {
+    background: var(--sangue);
+    color: var(--pergaminho-claro);
+}
+
+/* --------------------------------------------------------------------------
+   ANIMAÇÕES
+   -------------------------------------------------------------------------- */
+/* mantida do tema anterior para compatibilidade total */
+@keyframes bloco-in {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* vela/enxofre acesa (usado no item ativo do menu) */
+@keyframes cintilar {
+    0%, 100% {
+        text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.35), 0 0 6px rgba(216, 165, 58, 0.40);
+    }
+
+    50% {
+        text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.35), 0 0 16px rgba(216, 165, 58, 0.85);
+    }
+}
+
+/* armadilha do demônio girando lentamente no fundo (marca d'água global) */
+@keyframes girar-fundo {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* medalhão/sigilo girando (loader decorativo) */
+@keyframes girar-sigilo {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVIDADE
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    nav {
+        gap: 8px;
+        padding: 8px;
+    }
+
+    .menu {
+        gap: 7px;
+        padding: 0 2px;
+    }
+
+    .menu a {
+        font-size: 8px;
+        letter-spacing: 1px;
+        padding: 9px 9px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    h2 {
+        font-size: 14px;
+    }
+
+    .galeria .card,
+    .galeria .card-escolhido {
+        width: 160px;
+    }
+
+    .card img,
+    .card-escolhido img {
+        height: 120px;
+    }
+
+    .eixo {
+        padding: 14px;
+    }
+
+    .eixo h2 {
+        font-size: 10px;
+    }
+
+    .enochian-band .enochian {
+        height: 24px;
+    }
+
+    .silver-divider {
+        height: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu a {
+        font-size: 7px;
+        padding: 9px 6px;
+    }
+
+    .galeria .card,
+    .galeria .card-escolhido {
+        width: 156px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th,
+    td {
+        padding: 8px 4px;
+    }
+
+    footer .mark-of-cain {
+        position: static;
+        transform: none;
+        display: block;
+        margin: 0 auto 8px;
+    }
+
+    footer p {
+        padding: 0 6px;
+    }
+
+    .silver-divider {
+        height: 20px;
+    }
+
+    .enochian-band .enochian {
+        height: 18px;
+    }
+}

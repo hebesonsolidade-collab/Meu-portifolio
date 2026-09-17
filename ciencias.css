@@ -1,0 +1,34 @@
+/* ==========================================================================
+   CIENCIAS.HTML - ESTILOS ESPECÍFICOS
+   (tema base do Arquivo do Bunker em minecraft.css)
+   Acento da página: prata envelhecida de lâmina angelical / runas de anjo.
+   ========================================================================== */
+
+/* pastas de Natureza com veios de prata envelhecida */
+.eixo {
+    background-image:
+        radial-gradient(circle 5px at 10px 10px, rgba(214, 201, 179, 0.28), rgba(214, 201, 179, 0) 70%),
+        radial-gradient(circle 5px at calc(100% - 10px) 10px, rgba(214, 201, 179, 0.28), rgba(214, 201, 179, 0) 70%),
+        radial-gradient(circle 5px at 10px calc(100% - 10px), rgba(214, 201, 179, 0.28), rgba(214, 201, 179, 0) 70%),
+        radial-gradient(circle 5px at calc(100% - 10px) calc(100% - 10px), rgba(214, 201, 179, 0.28), rgba(214, 201, 179, 0) 70%),
+        radial-gradient(ellipse at 20% 0%, rgba(194, 199, 205, 0.07), transparent 55%),
+        linear-gradient(180deg, #21170c, #191006 70%, #150e06);
+}
+
+.eixo h2 {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.35),
+        inset 0 0 0 1px rgba(194, 199, 205, 0.80);
+}
+
+.eixo h2::after {
+    content: "· NAT";
+    font-size: 10px;
+    color: #4a525a;
+    margin-left: 6px;
+}
+
+.card:hover,
+.card-escolhido:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.60),
+        inset 0 0 18px rgba(194, 199, 205, 0.12);
+}

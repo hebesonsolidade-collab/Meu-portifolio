@@ -1,0 +1,23 @@
+/* ==========================================================================
+   HUMANAS.HTML - ESTILOS ESPECÍFICOS
+   (tema base do Arquivo do Bunker em minecraft.css)
+   Acento da página: sangue de caçador / misticismo do arquivo de John.
+   ========================================================================== */
+
+/* pastas de Humanas impressas com tinta de sangue */
+.eixo {
+    background-image:
+        radial-gradient(circle 5px at 10px 10px, rgba(214, 201, 179, 0.28), rgba(214, 201, 179, 0) 70%),
+        radial-gradient(circle 5px at calc(100% - 10px) 10px, rgba(214, 201, 179, 0.28), rgba(214, 201, 179, 0) 70%),
+        radial-gradient(circle 5px at 10px calc(100% - 10px), rgba(214, 201, 179, 0.28), rgba(214, 201, 179, 0) 70%),
+        radial-gradient(circle 5px at calc(100% - 10px) calc(100% - 10px), rgba(214, 201, 179, 0.28), rgba(214, 201, 179, 0) 70%),
+        radial-gradient(ellipse at 20% 0%, rgba(142, 31, 26, 0.08), transparent 55%),
+        linear-gradient(180deg, #21170c, #191006 70%, #150e06);
+}
+
+.eixo h2::after {
+    content: "· HUM";
+    font-size: 10px;
+    color: var(--sangue);
+    margin-left: 6px;
+}
