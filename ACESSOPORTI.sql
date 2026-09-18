@@ -11,4 +11,5 @@ CREATE TABLE usuarios (
 INSERT INTO usuarios (nome, email, senha) 
 VALUES ('Usuario Teste', 'teste@email.com', '123456');
 
+SELECT * FROM usuarios;
 show tables;
