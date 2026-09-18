@@ -5,10 +5,8 @@ const cors = require("cors");
 const app = express();
 const PORT = 3000;
 
-// FUNÇÃO DE VERIFICAÇÃO DE ORIGEM DO CORS (ATUALIZADA)
 function origemLocal(origem) {
-    // Permite conexões sem origem, origens "null" ou arquivos abertos direto no navegador (file://)
-    if (!origem || origem === "null" || origem.startsWith("file://")) {
+    if (!origem || origem === "null") {
         return true;
     }
 
@@ -88,7 +86,7 @@ app.post("/login", function (req, res) {
     console.log("📥 LOGIN RECEBIDO");
     console.log("=================================");
 
-    const email = req.body.usuario || req.body.email;
+    const email = req.body.usuario;
     const senha = req.body.senha;
 
     console.log("Email recebido:", email);
