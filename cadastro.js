@@ -23,7 +23,8 @@ formCadastro.addEventListener("submit", async function (event) {
         mensagem.textContent = "Realizando cadastro...";
         mensagem.style.color = "#555";
 
-        const resposta = await fetch("http://127.0.0.1:3000/cadastro", {
+        // URL ATUALIZADA PARA O RENDER
+        const resposta = await fetch("https://meu-portifolio-4xwy.onrender.com/cadastro", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

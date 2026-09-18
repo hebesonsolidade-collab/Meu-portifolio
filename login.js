@@ -31,8 +31,9 @@ formulario.addEventListener("submit", async function (event) {
         console.log("Enviando login...");
         console.log("Usuário:", usuario);
 
+        // URL ATUALIZADA PARA O RENDER
         const resposta = await fetch(
-            "http://127.0.0.1:3000/login",
+            "https://meu-portifolio-4xwy.onrender.com/login",
             {
                 method: "POST",
 
