@@ -4,6 +4,7 @@
   "description": "",
   "main": "login.js",
   "dependencies": {
+    "@supabase/supabase-js": "^2.116.0",
     "cors": "^2.8.6",
     "depd": "^2.0.0",
     "ee-first": "^1.1.1",
