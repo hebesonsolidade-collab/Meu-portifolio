@@ -1280,3 +1280,241 @@ button:hover .mark-of-cain {
         height: 18px;
     }
 }
+
+/* ==========================================================================
+   TRANSIÇÃO SOBRENATURAL ENTRE PÁGINAS — "portal dimensional"
+   --------------------------------------------------------------------------
+   A nova página entra pela ESQUERDA enquanto a antiga é consumida: uma
+   barreira de energia/portal varre a tela da esquerda para a direita.
+   A estrutura do DOM é criada pelo transicao.js (regras #portal-*).
+   ========================================================================== */
+:root {
+    --portal-tempo: 1150ms;
+    --portal-curva: cubic-bezier(0.52, 0, 0.16, 1);
+    --portal-larg: clamp(150px, 22vw, 300px);
+}
+
+/* container fixo que cobre a tela durante a transição */
+#portal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483000;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#portal-overlay.active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto; /* bloqueia cliques enquanto a passagem acontece */
+}
+
+/* ---- véu que consome a página antiga (fica por baixo da nova) ------------ */
+#portal-shadow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity var(--portal-tempo) ease;
+    background:
+        radial-gradient(90% 70% at 20% 40%, rgba(30, 22, 60, 0.55), transparent 60%),
+        linear-gradient(90deg,
+            rgba(5, 3, 10, 0.96),
+            rgba(7, 5, 12, 0.72) 30%,
+            rgba(9, 7, 14, 0.45) 58%,
+            rgba(10, 8, 12, 0.18) 82%,
+            rgba(10, 8, 8, 0) 100%);
+    will-change: opacity;
+}
+
+/* ---- a nova página pré-carregada, entrando pela esquerda ---------------- */
+#portal-in {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100%;
+    z-index: 2;
+    transform: translate3d(-100%, 0, 0);
+    will-change: transform;
+    transition: transform var(--portal-tempo) var(--portal-curva);
+}
+
+#portal-in iframe {
+    display: block;
+    border: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--preto-prfundo);
+}
+
+/* ---- névoa sutil que atravessa a tela junto com o portal --------------- */
+#portal-mist {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100%;
+    z-index: 3;
+    opacity: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(55% 65% at 30% 28%, rgba(58, 40, 92, 0.28), transparent 62%),
+        radial-gradient(48% 58% at 72% 72%, rgba(16, 58, 96, 0.24), transparent 62%),
+        linear-gradient(90deg, rgba(8, 12, 20, 0.30), rgba(5, 7, 12, 0.10) 45%, transparent);
+}
+
+/* ---- a barreira energética (portal) ------------------------------------- */
+#portal-edge {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: var(--portal-larg);
+    z-index: 4;
+    opacity: 0.92;
+    transform: translate3d(-50%, 0, 0); /* centraliza no extremo esquerdo */
+    will-change: transform;
+    transition: transform var(--portal-tempo) var(--portal-curva);
+    pointer-events: none;
+}
+
+/* fumaça/energia escura com borda irregular (wavy) */
+#portal-bruma {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -14%;
+    bottom: -14%;
+    background:
+        radial-gradient(70% 100% at 50% 50%, rgba(150, 205, 255, 0.30), transparent 68%),
+        linear-gradient(90deg,
+            rgba(6, 4, 12, 0.00) 0%,
+            rgba(12, 8, 22, 0.92) 32%,
+            rgba(64, 52, 128, 0.80) 50%,
+            rgba(22, 64, 118, 0.92) 64%,
+            rgba(6, 4, 12, 0.00) 100%);
+    clip-path: polygon(
+        9% 0, 21% 3%, 33% 1%, 46% 6%, 59% 2%, 73% 5%, 87% 2%, 95% 5%, 100% 1%,
+        100% 19%, 97% 31%, 100% 43%, 98% 57%, 100% 69%, 97% 83%, 100% 95%,
+        96% 100%, 84% 97%, 70% 100%, 56% 96%, 42% 100%, 28% 97%, 14% 100%, 4% 96%,
+        0 81%, 3% 67%, 0 53%, 2% 39%, 0 25%, 3% 11%);
+    filter: blur(7px) saturate(1.25);
+    opacity: 0.55;
+    animation: portal-brumar 2.9s ease-in-out infinite;
+    will-change: opacity;
+}
+
+/* núcleo luminoso vertical da passagem */
+#portal-nucleo {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    margin-left: -3px;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        rgba(190, 228, 255, 0.55) 16%,
+        #eef8ff 50%,
+        rgba(150, 205, 255, 0.55) 84%,
+        transparent 100%);
+    filter:
+        drop-shadow(0 0 5px rgba(111, 215, 255, 0.90))
+        drop-shadow(0 0 16px rgba(111, 215, 255, 0.55))
+        drop-shadow(0 0 30px rgba(92, 58, 190, 0.45));
+    animation: portal-nucleo 1.6s ease-in-out infinite;
+    will-change: opacity;
+}
+
+/* partículas sobrenaturais flutuando na barreira */
+.portal-p {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    animation: portal-particula
+        calc(var(--duracao, 3s)) ease-in-out
+        calc(var(--atraso, 0s)) infinite;
+}
+
+/* ---- estados ------------------------------------------------------------ */
+#portal-overlay.sweep #portal-in {
+    transform: translate3d(0, 0, 0);
+}
+
+#portal-overlay.sweep #portal-edge {
+    transform: translate3d(calc(100vw - 50%), 0, 0); /* centro chega ao extremo direito */
+}
+
+#portal-overlay.sweep #portal-shadow {
+    opacity: 1;
+}
+
+#portal-overlay.sweep #portal-mist {
+    animation: portal-nevoa var(--portal-tempo) var(--portal-curva) forwards;
+}
+
+/* se a página nova demorar a carregar, o véu cobre para não mostrar janela */
+#portal-overlay.garantia #portal-shadow {
+    opacity: 1;
+}
+
+/* trava a rolagem durante a passagem */
+html.portal-busy,
+html.portal-busy body {
+    overflow: hidden !important;
+}
+
+/* ---- animações ---------------------------------------------------------- */
+@keyframes portal-brumar {
+    0%, 100% { opacity: 0.42; }
+    28% { opacity: 0.78; }
+    52% { opacity: 0.55; }
+    74% { opacity: 0.85; }
+}
+
+@keyframes portal-nucleo {
+    0%, 100% { opacity: 0.80; }
+    50% { opacity: 1; }
+}
+
+@keyframes portal-particula {
+    0% {
+        transform: translateY(0) translateX(0) scale(0.4);
+        opacity: 0;
+    }
+    18% {
+        opacity: var(--op, 0.8);
+    }
+    70% {
+        opacity: calc(var(--op, 0.8) * 0.75);
+    }
+    100% {
+        transform: translateY(-16vh) translateX(8px) scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes portal-nevoa {
+    0% { opacity: 0; }
+    28% { opacity: 0.55; }
+    72% { opacity: 0.30; }
+    100% { opacity: 0; }
+}
+
+/* acessibilidade: usuários que preferem menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --portal-tempo: 280ms;
+    }
+
+    .portal-p {
+        display: none;
+    }
+}
