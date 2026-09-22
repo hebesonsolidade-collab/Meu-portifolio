@@ -511,7 +511,7 @@ h3 {
 }
 
 .card-escolhido::after {
-    content: "RESOLVIDO";
+    content: "Caso Resolvido";
     position: absolute;
     right: 6px;
     bottom: 8px;
