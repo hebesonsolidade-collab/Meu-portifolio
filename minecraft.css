@@ -418,9 +418,9 @@ h3 {
     z-index: 2;
 }
 
-/* carimbo de status revelado no hover ("caso arquivado") */
+/* carimbo de status revelado no hover ("caso resolvido") */
 .card::after {
-    content: "EM ANDAMENTO";
+    content: "Caso Resolvido";
     position: absolute;
     right: 6px;
     bottom: 8px;
