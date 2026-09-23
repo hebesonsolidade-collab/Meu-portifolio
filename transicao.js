@@ -18,7 +18,7 @@
         window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     /* durações em ms — precisam combinar com --portal-tempo do CSS */
-    var DURACAO = REDUZIDO ? 280 : 1150;
+    var DURACAO = REDUZIDO ? 280 : 1500;
     var CARGA_MAX = 2600;          /* tempo máximo esperando a página carregar */
     var FIM_SEG = DURACAO + 220;   /* conclui a navegação logo após a varredura */
     var ABORT_APOS = DURACAO + 3400; /* se a navegação falhar, solta a tela */

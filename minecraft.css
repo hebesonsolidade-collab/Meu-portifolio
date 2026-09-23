@@ -1289,8 +1289,8 @@ button:hover .mark-of-cain {
    A estrutura do DOM é criada pelo transicao.js (regras #portal-*).
    ========================================================================== */
 :root {
-    --portal-tempo: 1150ms;
-    --portal-curva: cubic-bezier(0.52, 0, 0.16, 1);
+    --portal-tempo: 1500ms;
+    --portal-curva: cubic-bezier(0.65, 0, 0.35, 1);
     --portal-larg: clamp(150px, 22vw, 300px);
 }
 
