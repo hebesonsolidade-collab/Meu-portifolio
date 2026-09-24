@@ -511,7 +511,7 @@ h3 {
 }
 
 .card-escolhido::after {
-    content: "Caso Resolvido";
+    content: "Caso em Destaque";
     position: absolute;
     right: 6px;
     bottom: 8px;
@@ -865,6 +865,7 @@ footer {
 
 footer p {
     font-size: 13px;
+    margin-top: 35px;
     font-family: var(--fonte-pixel);
     letter-spacing: 1px;
     color: #b8a888;
