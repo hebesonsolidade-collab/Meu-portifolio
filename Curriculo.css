@@ -1,0 +1,458 @@
+/* ==========================================================================
+   CURRÍCULO — ARQUIVO PROFISSIONAL DO BUNKER
+   Estilos exclusivos desta página. O tema global continua em minecraft.css.
+   ========================================================================== */
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.rodape-site {
+    margin-top: auto;
+    padding: 18px 12px;
+    text-align: center;
+    color: var(--texto, #d6cbb0);
+    font-size: 13px;
+}
+
+.curriculo-container {
+    width: min(1100px, 94%);
+    margin: 34px auto 42px;
+    padding: clamp(18px, 4vw, 42px);
+    color: #352317;
+    background:
+        radial-gradient(circle at 12% 8%, rgba(255,255,255,.42), transparent 28%),
+        repeating-linear-gradient(0deg, rgba(85,58,30,.025) 0 1px, transparent 1px 4px),
+        linear-gradient(145deg, #f2e6c4, #dfcda0 72%, #d4bd89);
+    border: 1px solid #9c8050;
+    outline: 5px solid rgba(25, 16, 8, .72);
+    box-shadow: 0 14px 38px rgba(0,0,0,.58), inset 0 0 35px rgba(93,62,28,.13);
+    position: relative;
+    isolation: isolate;
+    animation: curriculo-entrada .55s ease both;
+}
+
+.curriculo-container::before,
+.curriculo-container::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.curriculo-container::before {
+    inset: 9px;
+    border: 1px solid rgba(91, 61, 31, .42);
+}
+
+.curriculo-container::after {
+    width: 150px;
+    height: 150px;
+    right: 24px;
+    top: 24px;
+    opacity: .08;
+    border: 2px solid #5a3921;
+    border-radius: 50%;
+    box-shadow: 0 0 0 12px transparent, 0 0 0 14px #5a3921;
+}
+
+.curriculo-cabecalho {
+    position: relative;
+    padding: 8px 8px 26px;
+    border-bottom: 2px solid rgba(74, 47, 25, .48);
+}
+
+.arquivo-selo {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    padding: 8px 11px;
+    border: 2px solid #8e1f1a;
+    color: #8e1f1a;
+    font: 10px/1.35 var(--fonte-pixel, monospace);
+    letter-spacing: 1px;
+    text-align: center;
+    transform: rotate(7deg);
+    opacity: .82;
+}
+
+.identificacao {
+    color: #79552f;
+    font: 11px var(--fonte-pixel, monospace);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.curriculo-cabecalho h1 {
+    margin-top: 8px;
+    color: #2d1b10;
+    font-size: clamp(30px, 5vw, 46px);
+    text-shadow: none;
+}
+
+.subtitulo {
+    color: #6a4b2d;
+    font-style: italic;
+    font-size: 17px;
+}
+
+.linha-decorativa {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: min(330px, 80%);
+    margin: 15px 0 22px;
+    color: #9b742f;
+}
+
+.linha-decorativa::before,
+.linha-decorativa::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(90deg, transparent, #9b742f);
+}
+
+.linha-decorativa::after {
+    background: linear-gradient(90deg, #9b742f, transparent);
+}
+
+.apresentacao {
+    display: grid;
+    grid-template-columns: 94px 1fr;
+    gap: 20px;
+    align-items: start;
+    max-width: 850px;
+}
+
+.monograma {
+    width: 88px;
+    height: 88px;
+    display: grid;
+    place-items: center;
+    color: #e9dcb2;
+    background: linear-gradient(145deg, #3b2818, #160e07);
+    border: 3px double #b18b4c;
+    box-shadow: 0 4px 10px rgba(0,0,0,.28);
+    font: 25px var(--fonte-pixel, monospace);
+}
+
+.apresentacao h2 {
+    color: #2d1b10;
+    font: 26px var(--fonte-pixel, monospace);
+    text-shadow: none;
+}
+
+.cargo {
+    margin: 3px 0 10px;
+    color: #815b2e;
+    font-weight: bold;
+}
+
+.resumo {
+    max-width: 760px;
+    color: #3c2a1c;
+    line-height: 1.7;
+}
+
+.acoes-curriculo {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 22px;
+}
+
+.acoes-curriculo button {
+    color: #f0dfb7;
+}
+
+.nota-arquivo {
+    color: #765b39;
+    font: 10px var(--fonte-pixel, monospace);
+}
+
+.curriculo-grade {
+    display: grid;
+    grid-template-columns: minmax(220px, .78fr) minmax(0, 1.65fr);
+    gap: clamp(22px, 4vw, 44px);
+    padding: 28px 8px 12px;
+}
+
+.coluna-lateral {
+    padding-right: 22px;
+    border-right: 1px dashed rgba(87, 58, 31, .5);
+}
+
+.bloco-curriculo {
+    margin-bottom: 28px;
+    break-inside: avoid;
+}
+
+.bloco-curriculo h2 {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 13px;
+    padding-bottom: 8px;
+    color: #3c2718;
+    border-bottom: 1px solid rgba(98, 67, 34, .42);
+    font: 15px var(--fonte-pixel, monospace);
+    letter-spacing: .4px;
+    text-shadow: none;
+}
+
+.bloco-curriculo h2 span {
+    color: #9a702e;
+    font-size: 19px;
+}
+
+.bloco-curriculo p,
+.lista-pontos,
+.lista-contato {
+    color: #493321;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.lista-contato,
+.lista-pontos {
+    list-style: none;
+}
+
+.lista-contato li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0 0 13px;
+    overflow-wrap: anywhere;
+}
+
+.lista-contato b {
+    color: #2f1d12;
+}
+
+.icone {
+    min-width: 25px;
+    color: #8d6429;
+    font-size: 18px;
+}
+
+.lista-pontos li {
+    position: relative;
+    padding-left: 17px;
+    margin: 7px 0;
+}
+
+.lista-pontos li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    color: #9a702e;
+}
+
+.texto-ajuda {
+    color: #765b39 !important;
+    font-size: 12px !important;
+    font-style: italic;
+}
+
+.registro {
+    position: relative;
+    display: grid;
+    grid-template-columns: 13px 1fr;
+    gap: 12px;
+    margin: 0 0 20px;
+}
+
+.marcador-tempo {
+    width: 9px;
+    height: 9px;
+    margin-top: 7px;
+    border-radius: 50%;
+    background: #a47731;
+    box-shadow: 0 0 0 3px rgba(164,119,49,.18);
+}
+
+.registro h3,
+.projeto-registro h3 {
+    color: #342116;
+    font-size: 16px;
+    margin-bottom: 3px;
+}
+
+.registro p,
+.projeto-registro p {
+    margin-top: 4px;
+}
+
+.instituicao {
+    color: #8a622e !important;
+    font-weight: bold;
+}
+
+.etiquetas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 13px;
+}
+
+.etiquetas span,
+.etiqueta-status {
+    display: inline-block;
+    padding: 6px 10px;
+    color: #4b321d;
+    background: rgba(160, 124, 66, .15);
+    border: 1px solid rgba(119, 83, 39, .42);
+    font-size: 12px;
+}
+
+.projeto-registro {
+    padding: 0 0 15px 14px;
+    margin-bottom: 16px;
+    border-left: 2px solid rgba(154,112,46,.65);
+}
+
+.etiqueta-status {
+    margin-top: 9px;
+    color: #78551f;
+    font: 10px var(--fonte-pixel, monospace);
+    text-transform: uppercase;
+}
+
+.rodape-curriculo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding-top: 17px;
+    border-top: 2px solid rgba(74,47,25,.42);
+    color: #765b39;
+    font: 10px var(--fonte-pixel, monospace);
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.selo-rodape {
+    color: #9b742f;
+    font-size: 17px;
+}
+
+@keyframes curriculo-entrada {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 720px) {
+    .curriculo-container {
+        width: 94%;
+        margin: 22px auto 30px;
+        padding: 22px 17px;
+    }
+
+    .arquivo-selo {
+        position: static;
+        display: inline-block;
+        margin-bottom: 12px;
+    }
+
+    .apresentacao {
+        grid-template-columns: 66px 1fr;
+        gap: 13px;
+    }
+
+    .monograma {
+        width: 62px;
+        height: 62px;
+        font-size: 18px;
+    }
+
+    .apresentacao h2 {
+        font-size: 20px;
+    }
+
+    .curriculo-grade {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding-top: 22px;
+    }
+
+    .coluna-lateral {
+        padding-right: 0;
+        border-right: 0;
+        border-bottom: 1px dashed rgba(87,58,31,.5);
+    }
+}
+
+@media (max-width: 420px) {
+    .identificacao {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .resumo,
+    .bloco-curriculo p,
+    .lista-pontos,
+    .lista-contato {
+        font-size: 13px;
+    }
+
+    .acoes-curriculo {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media print {
+    @page {
+        size: A4;
+        margin: 12mm;
+    }
+
+    body {
+        display: block;
+        min-height: auto;
+        background: #fff !important;
+        color: #24150d !important;
+    }
+
+    body::before,
+    body::after,
+    nav,
+    .rodape-site,
+    .acoes-curriculo,
+    .angels-layer {
+        display: none !important;
+    }
+
+    .curriculo-container {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 8mm;
+        outline: none;
+        box-shadow: none;
+        border: 1px solid #9c8050;
+        animation: none;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .curriculo-grade {
+        grid-template-columns: .78fr 1.65fr;
+        gap: 8mm;
+    }
+
+    .bloco-curriculo,
+    .registro,
+    .projeto-registro {
+        break-inside: avoid;
+    }
+
+    .rodape-curriculo {
+        margin-top: 8mm;
+    }
+}
