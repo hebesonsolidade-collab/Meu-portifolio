@@ -105,6 +105,9 @@ body {
     background-repeat: no-repeat;
     background-size: auto, auto, auto, auto, auto, cover;
     background-position: center center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ==================================================================
@@ -230,11 +233,11 @@ nav::after {
     pointer-events: none;
 }
 
-nav > a {
+nav>a {
     flex-shrink: 0;
 }
 
-nav > a > button {
+nav>a>button {
     margin: 0;
     white-space: nowrap;
 }
@@ -904,10 +907,17 @@ footer strong {
 }
 
 /* faixa inferior do rodapé (opcional) */
+
+main {
+    flex: 1;
+}
+
 .enochian-band.footer-band {
     padding: 6px 0 10px;
     border-bottom: 1px dashed rgba(216, 165, 58, 0.25);
     margin-bottom: 10px;
+    width: 100%;
+    margin-top: auto;
 }
 
 /* ===================== LÍNGUA DOS ANJOS (fundo do site inteiro) ========= */
@@ -938,18 +948,54 @@ footer strong {
 }
 
 /* cada fileira deriva em ritmo pr?prio para um movimento sutil e vivo */
-.angels-layer .sigil-row:nth-child(1) { --deriva-duracao: 13s; --deriva-atraso: -2s; }
-.angels-layer .sigil-row:nth-child(2) { --deriva-duracao: 17s; --deriva-atraso: -7s; }
-.angels-layer .sigil-row:nth-child(3) { --deriva-duracao: 12s; --deriva-atraso: -1s; }
-.angels-layer .sigil-row:nth-child(4) { --deriva-duracao: 16s; --deriva-atraso: -9s; }
-.angels-layer .sigil-row:nth-child(5) { --deriva-duracao: 14s; --deriva-atraso: -5s; }
-.angels-layer .sigil-row:nth-child(6) { --deriva-duracao: 18s; --deriva-atraso: -11s; }
+.angels-layer .sigil-row:nth-child(1) {
+    --deriva-duracao: 13s;
+    --deriva-atraso: -2s;
+}
+
+.angels-layer .sigil-row:nth-child(2) {
+    --deriva-duracao: 17s;
+    --deriva-atraso: -7s;
+}
+
+.angels-layer .sigil-row:nth-child(3) {
+    --deriva-duracao: 12s;
+    --deriva-atraso: -1s;
+}
+
+.angels-layer .sigil-row:nth-child(4) {
+    --deriva-duracao: 16s;
+    --deriva-atraso: -9s;
+}
+
+.angels-layer .sigil-row:nth-child(5) {
+    --deriva-duracao: 14s;
+    --deriva-atraso: -5s;
+}
+
+.angels-layer .sigil-row:nth-child(6) {
+    --deriva-duracao: 18s;
+    --deriva-atraso: -11s;
+}
 
 @keyframes paira-anjos {
-    0%, 100% { transform: translate(-20px, 0); }
-    25% { transform: translate(8px, 4px); }
-    50% { transform: translate(20px, 0); }
-    75% { transform: translate(8px, -4px); }
+
+    0%,
+    100% {
+        transform: translate(-20px, 0);
+    }
+
+    25% {
+        transform: translate(8px, 4px);
+    }
+
+    50% {
+        transform: translate(20px, 0);
+    }
+
+    75% {
+        transform: translate(8px, -4px);
+    }
 }
 
 /* brilho individual ao passar o mouse em cima de um glifo */
@@ -997,12 +1043,7 @@ footer strong {
 .mark-of-cain:hover {
     color: var(--caim-cor-nucleo);
     filter:
-        drop-shadow(0 0 1px rgba(255, 230, 227, 0.95))
-        drop-shadow(0 0 4px var(--caim-cor-rosa))
-        drop-shadow(0 0 9px var(--caim-cor-rosa-esc))
-        drop-shadow(0 0 16px rgba(165, 79, 69, 0.75))
-        drop-shadow(0 0 26px rgba(110, 43, 38, 0.60))
-        drop-shadow(0 0 40px var(--caim-cor-halo));
+        drop-shadow(0 0 1px rgba(255, 230, 227, 0.95)) drop-shadow(0 0 4px var(--caim-cor-rosa)) drop-shadow(0 0 9px var(--caim-cor-rosa-esc)) drop-shadow(0 0 16px rgba(165, 79, 69, 0.75)) drop-shadow(0 0 26px rgba(110, 43, 38, 0.60)) drop-shadow(0 0 40px var(--caim-cor-halo));
     transform: scale(1.06);
 }
 
@@ -1040,9 +1081,7 @@ button .mark-of-cain svg {
 button:hover .mark-of-cain {
     color: var(--caim-cor-nucleo);
     filter:
-        drop-shadow(0 0 2px rgba(255, 230, 227, 0.95))
-        drop-shadow(0 0 6px rgba(247, 175, 169, 0.85))
-        drop-shadow(0 0 12px rgba(217, 123, 114, 0.75));
+        drop-shadow(0 0 2px rgba(255, 230, 227, 0.95)) drop-shadow(0 0 6px rgba(247, 175, 169, 0.85)) drop-shadow(0 0 12px rgba(217, 123, 114, 0.75));
 }
 
 /* ===================== ARMADILHA DO DEMÔNIO (medalhão giratório) ======= */
@@ -1083,9 +1122,9 @@ button:hover .mark-of-cain {
     height: 2px;
     transform: translateY(2px);
     background: repeating-linear-gradient(90deg,
-        transparent 0 6px,
-        rgba(216, 165, 58, 0.50) 6px 9px,
-        transparent 9px 15px);
+            transparent 0 6px,
+            rgba(216, 165, 58, 0.50) 6px 9px,
+            transparent 9px 15px);
 }
 
 /* filete de balas de prata por cima da costura */
@@ -1100,9 +1139,9 @@ button:hover .mark-of-cain {
     border-radius: 4px;
     opacity: 0.90;
     background: repeating-linear-gradient(90deg,
-        transparent 0 24px,
-        #b9c0c6 24px 32px,
-        transparent 32px 56px);
+            transparent 0 24px,
+            #b9c0c6 24px 32px,
+            transparent 32px 56px);
 }
 
 /* --------------------------------------------------------------------------
@@ -1156,7 +1195,9 @@ button:hover .mark-of-cain {
 
 /* vela/enxofre acesa (usado no item ativo do menu) */
 @keyframes cintilar {
-    0%, 100% {
+
+    0%,
+    100% {
         text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.35), 0 0 6px rgba(216, 165, 58, 0.40);
     }
 
@@ -1309,7 +1350,8 @@ button:hover .mark-of-cain {
 #portal-overlay.active {
     visibility: visible;
     opacity: 1;
-    pointer-events: auto; /* bloqueia cliques enquanto a passagem acontece */
+    pointer-events: auto;
+    /* bloqueia cliques enquanto a passagem acontece */
 }
 
 /* ---- véu que consome a página antiga (fica por baixo da nova) ------------ */
@@ -1379,7 +1421,8 @@ button:hover .mark-of-cain {
     width: var(--portal-larg);
     z-index: 4;
     opacity: 0.92;
-    transform: translate3d(-50%, 0, 0); /* centraliza no extremo esquerdo */
+    transform: translate3d(-50%, 0, 0);
+    /* centraliza no extremo esquerdo */
     will-change: transform;
     transition: transform var(--portal-tempo) var(--portal-curva);
     pointer-events: none;
@@ -1400,11 +1443,10 @@ button:hover .mark-of-cain {
             rgba(64, 52, 128, 0.80) 50%,
             rgba(22, 64, 118, 0.92) 64%,
             rgba(6, 4, 12, 0.00) 100%);
-    clip-path: polygon(
-        9% 0, 21% 3%, 33% 1%, 46% 6%, 59% 2%, 73% 5%, 87% 2%, 95% 5%, 100% 1%,
-        100% 19%, 97% 31%, 100% 43%, 98% 57%, 100% 69%, 97% 83%, 100% 95%,
-        96% 100%, 84% 97%, 70% 100%, 56% 96%, 42% 100%, 28% 97%, 14% 100%, 4% 96%,
-        0 81%, 3% 67%, 0 53%, 2% 39%, 0 25%, 3% 11%);
+    clip-path: polygon(9% 0, 21% 3%, 33% 1%, 46% 6%, 59% 2%, 73% 5%, 87% 2%, 95% 5%, 100% 1%,
+            100% 19%, 97% 31%, 100% 43%, 98% 57%, 100% 69%, 97% 83%, 100% 95%,
+            96% 100%, 84% 97%, 70% 100%, 56% 96%, 42% 100%, 28% 97%, 14% 100%, 4% 96%,
+            0 81%, 3% 67%, 0 53%, 2% 39%, 0 25%, 3% 11%);
     filter: blur(7px) saturate(1.25);
     opacity: 0.55;
     animation: portal-brumar 2.9s ease-in-out infinite;
@@ -1420,15 +1462,13 @@ button:hover .mark-of-cain {
     width: 5px;
     margin-left: -3px;
     background: linear-gradient(180deg,
-        transparent 0%,
-        rgba(190, 228, 255, 0.55) 16%,
-        #eef8ff 50%,
-        rgba(150, 205, 255, 0.55) 84%,
-        transparent 100%);
+            transparent 0%,
+            rgba(190, 228, 255, 0.55) 16%,
+            #eef8ff 50%,
+            rgba(150, 205, 255, 0.55) 84%,
+            transparent 100%);
     filter:
-        drop-shadow(0 0 5px rgba(111, 215, 255, 0.90))
-        drop-shadow(0 0 16px rgba(111, 215, 255, 0.55))
-        drop-shadow(0 0 30px rgba(92, 58, 190, 0.45));
+        drop-shadow(0 0 5px rgba(111, 215, 255, 0.90)) drop-shadow(0 0 16px rgba(111, 215, 255, 0.55)) drop-shadow(0 0 30px rgba(92, 58, 190, 0.45));
     animation: portal-nucleo 1.6s ease-in-out infinite;
     will-change: opacity;
 }
@@ -1439,9 +1479,7 @@ button:hover .mark-of-cain {
     border-radius: 50%;
     opacity: 0;
     pointer-events: none;
-    animation: portal-particula
-        calc(var(--duracao, 3s)) ease-in-out
-        calc(var(--atraso, 0s)) infinite;
+    animation: portal-particula calc(var(--duracao, 3s)) ease-in-out calc(var(--atraso, 0s)) infinite;
 }
 
 /* ---- estados ------------------------------------------------------------ */
@@ -1450,7 +1488,8 @@ button:hover .mark-of-cain {
 }
 
 #portal-overlay.sweep #portal-edge {
-    transform: translate3d(calc(100vw - 50%), 0, 0); /* centro chega ao extremo direito */
+    transform: translate3d(calc(100vw - 50%), 0, 0);
+    /* centro chega ao extremo direito */
 }
 
 #portal-overlay.sweep #portal-shadow {
@@ -1474,15 +1513,35 @@ html.portal-busy body {
 
 /* ---- animações ---------------------------------------------------------- */
 @keyframes portal-brumar {
-    0%, 100% { opacity: 0.42; }
-    28% { opacity: 0.78; }
-    52% { opacity: 0.55; }
-    74% { opacity: 0.85; }
+
+    0%,
+    100% {
+        opacity: 0.42;
+    }
+
+    28% {
+        opacity: 0.78;
+    }
+
+    52% {
+        opacity: 0.55;
+    }
+
+    74% {
+        opacity: 0.85;
+    }
 }
 
 @keyframes portal-nucleo {
-    0%, 100% { opacity: 0.80; }
-    50% { opacity: 1; }
+
+    0%,
+    100% {
+        opacity: 0.80;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
 @keyframes portal-particula {
@@ -1490,12 +1549,15 @@ html.portal-busy body {
         transform: translateY(0) translateX(0) scale(0.4);
         opacity: 0;
     }
+
     18% {
         opacity: var(--op, 0.8);
     }
+
     70% {
         opacity: calc(var(--op, 0.8) * 0.75);
     }
+
     100% {
         transform: translateY(-16vh) translateX(8px) scale(1);
         opacity: 0;
@@ -1503,10 +1565,21 @@ html.portal-busy body {
 }
 
 @keyframes portal-nevoa {
-    0% { opacity: 0; }
-    28% { opacity: 0.55; }
-    72% { opacity: 0.30; }
-    100% { opacity: 0; }
+    0% {
+        opacity: 0;
+    }
+
+    28% {
+        opacity: 0.55;
+    }
+
+    72% {
+        opacity: 0.30;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 /* acessibilidade: usuários que preferem menos movimento */
